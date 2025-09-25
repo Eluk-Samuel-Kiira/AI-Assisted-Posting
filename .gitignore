@@ -1,0 +1,5 @@
+# Google API credentials
+writable/credentials.json
+writable/token.json
+public/.htaccess
+.env
