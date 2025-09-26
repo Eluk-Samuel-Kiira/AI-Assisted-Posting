@@ -30,6 +30,11 @@ class CreateUsersTable extends Migration
                 'constraint' => '255',
                 'null' => false,
             ],
+            'company' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+                'null' => true,
+            ],
             'password' => [
                 'type' => 'VARCHAR',
                 'constraint' => '255',
@@ -49,6 +54,39 @@ class CreateUsersTable extends Migration
                 'type' => 'DATETIME',
                 'null' => true,
             ],
+            'status' => [
+                'type' => 'ENUM',
+                'constraint' => ['active', 'inactive', 'suspended'],
+                'default' => 'inactive',
+            ],
+            'last_login' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
+            'login_count' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'default' => 0,
+            ],
+            'timezone' => [
+                'type' => 'VARCHAR',
+                'constraint' => '100',
+                'default' => 'UTC',
+            ],
+            'profile_image' => [
+                'type' => 'VARCHAR',
+                'constraint' => '500',
+                'null' => true,
+            ],
+            'role' => [
+                'type' => 'ENUM',
+                'constraint' => ['user', 'admin', 'moderator'],
+                'default' => 'user',
+            ],
+            'preferences' => [
+                'type' => 'TEXT',
+                'null' => true,
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
@@ -57,11 +95,17 @@ class CreateUsersTable extends Migration
                 'type' => 'DATETIME',
                 'null' => true,
             ],
+            'deleted_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
         ]);
 
         $this->forge->addPrimaryKey('id');
         $this->forge->addUniqueKey('username');
         $this->forge->addUniqueKey('email');
+        $this->forge->addKey('status');
+        $this->forge->addKey('created_at');
         $this->forge->createTable('users');
     }
 

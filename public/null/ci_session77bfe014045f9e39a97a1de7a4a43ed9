@@ -1,0 +1,1 @@
+__ci_last_regenerate|i:1758923166;_ci_previous_url|s:32:"http://localhost:8080/job-parser";user_id|s:1:"6";username|s:7:"Celetes";email|s:25:"samuelkiiraeluk@gmail.com";logged_in|b:1;error|s:62:"Error loading jobs: Unknown column 'user_id' in 'where clause'";__ci_vars|a:1:{s:5:"error";s:3:"new";}

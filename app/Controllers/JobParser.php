@@ -100,9 +100,6 @@ class JobParser extends Controller
         }
     }
 
-    /**
-     * Parse date string to MySQL format
-     */
     private function parseDate($dateString)
     {
         if (empty($dateString)) {
@@ -117,39 +114,105 @@ class JobParser extends Controller
             return null;
         }
     }
+    
 
+    
     /**
-     * Get all saved jobs
+     * Get all saved jobs (reload page)
      */
     public function getJobs()
     {
         try {
-            $jobs = $this->jobModel->findAll();
+            $jobs = $this->jobModel
+                        ->orderBy('created_at', 'DESC')
+                        ->findAll();
             
-            // Decode JSON fields for response
-            foreach ($jobs as &$job) {
+            // Process the jobs data
+            $processedJobs = [];
+            foreach ($jobs as $job) {
+                // Decode JSON array fields
                 $jsonFields = ['skills', 'requirements', 'responsibilities', 'benefits', 'preferred_qualifications'];
+                
                 foreach ($jsonFields as $field) {
-                    if (isset($job[$field]) && is_string($job[$field])) {
+                    if (isset($job[$field]) && is_string($job[$field]) && !empty($job[$field])) {
                         $decoded = json_decode($job[$field], true);
-                        if (json_last_error() === JSON_ERROR_NONE) {
-                            $job[$field] = $decoded;
-                        } else {
-                            $job[$field] = [];
-                        }
+                        $job[$field] = (json_last_error() === JSON_ERROR_NONE) ? $decoded : [];
+                    } else {
+                        $job[$field] = [];
                     }
                 }
+                
+                $processedJobs[] = $job;
+            }
+
+            $data = [
+                'title' => 'Job Postings - LaFab AI Posting',
+                'jobs' => $processedJobs
+            ];
+
+            return view('job_postings/index', $data);
+            
+        } catch (\Exception $e) {
+            return redirect()->to('/job-postings')->with('error', 'Error loading jobs: ' . $e->getMessage());
+        }
+    }
+
+     /**
+     * View single job details
+     */
+    public function view($id)
+    {
+        try {
+            $job = $this->jobModel->find($id);
+            
+            if (!$job) {
+                return redirect()->to('/job-postings')->with('error', 'Job not found');
             }
             
-            return $this->response->setJSON([
-                'success' => true,
-                'jobs' => $jobs
-            ]);
+            // Decode JSON array fields for the single job
+            $jsonFields = ['skills', 'requirements', 'responsibilities', 'benefits', 'preferred_qualifications'];
+            
+            foreach ($jsonFields as $field) {
+                if (isset($job[$field]) && is_string($job[$field]) && !empty($job[$field])) {
+                    $decoded = json_decode($job[$field], true);
+                    $job[$field] = (json_last_error() === JSON_ERROR_NONE) ? $decoded : [];
+                } else {
+                    $job[$field] = [];
+                }
+            }
+
+            $data = [
+                'title' => ($job['job_title'] ?? 'Job Details') . ' - LaFab AI Posting',
+                'job' => $job
+            ];
+
+            return view('job_postings/view', $data);
+            
         } catch (\Exception $e) {
-            return $this->response->setJSON([
-                'success' => false,
-                'message' => 'Error retrieving jobs: ' . $e->getMessage()
-            ]);
+            return redirect()->to('/job-postings')->with('error', 'Error loading job: ' . $e->getMessage());
+        }
+    }
+    
+
+    /**
+     * Delete a job
+     */
+    public function delete($id)
+    {
+        try {
+            $job = $this->jobModel->find($id);
+            
+            if (!$job) {
+                return redirect()->to('/job-postings')->with('error', 'Job not found');
+            }
+            
+            // Delete the job
+            $this->jobModel->delete($id);
+            
+            return redirect()->to('/job-postings')->with('success', 'Job deleted successfully');
+            
+        } catch (\Exception $e) {
+            return redirect()->to('/job-postings')->with('error', 'Error deleting job: ' . $e->getMessage());
         }
     }
 }

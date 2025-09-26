@@ -101,16 +101,5 @@ class Home extends BaseController
 
 
 
-    
-    
-    public function dashboard()
-    {
-        // Dashboard for viewing processed data
-        $data = [
-            'title' => 'Dashboard - LinkedIn Processor',
-            'recent_emails' => [] // Will be populated from database
-        ];
-        
-        return view('dashboard', $data);
-    }
+
 }

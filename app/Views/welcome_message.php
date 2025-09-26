@@ -3,707 +3,735 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Advert Analyzer</title>
+    <title>AI-Powered Job Posting | LaFab Solution</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f0f2f5;
-            color: #333;
+        :root {
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --success: #27ae60;
+            --text: #333;
+            --text-light: #7f8c8d;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --gradient: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
         }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            text-align: center;
-            color: #7f8c8d;
-            margin-bottom: 30px;
-        }
-        .input-group {
-            margin-bottom: 20px;
-        }
-        textarea {
-            width: 100%;
-            height: 180px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            resize: vertical;
-            font-size: 16px;
+        
+        * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
-            transition: border-color 0.3s;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        textarea:focus {
-            outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-        }
-        button {
-            background-color: #3498db;
-            color: white;
-            padding: 14px 30px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            width: 100%;
-            margin-bottom: 20px;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-        button:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
-        }
-        button:active {
-            transform: translateY(0);
-        }
-        button:disabled {
-            background-color: #bdc3c7;
-            cursor: not-allowed;
-            transform: none;
-        }
-        .response {
-            margin-top: 30px;
-            padding: 25px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            border-left: 5px solid #3498db;
-            transition: all 0.3s;
-        }
-        .loading {
-            text-align: center;
-            color: #7f8c8d;
-            padding: 30px;
-            font-size: 18px;
-        }
-        .error {
-            border-color: #e74c3c;
-            color: #c0392b;
-            background-color: #fadbd8;
-        }
-        .success {
-            border-color: #27ae60;
-            background-color: #d5f4e6;
-        }
-        .usage-info {
-            margin-top: 15px;
-            padding: 12px;
-            background-color: #e9ecef;
-            border-radius: 6px;
-            font-size: 14px;
-            color: #495057;
-        }
-        .message-content {
+        
+        body {
+            background-color: #f9fbfd;
+            color: var(--text);
             line-height: 1.6;
-            white-space: pre-wrap;
+            overflow-x: hidden;
         }
-        .json-output {
-            background: #2c3e50;
-            color: #ecf0f1;
-            padding: 15px;
-            border-radius: 6px;
-            overflow-x: auto;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            margin-top: 15px;
-            max-height: 500px;
-            overflow-y: auto;
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .job-details {
+        
+        /* Header Styles */
+        header {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
         }
-        .job-details h3 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-        .detail-item {
-            margin-bottom: 10px;
+        
+        nav {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
         }
-        .detail-label {
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .logo i {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .login-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
             font-weight: 600;
-            min-width: 180px;
-            color: #34495e;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
         }
-        .detail-value {
+        
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,202.7C672,203,768,181,864,170.7C960,160,1056,160,1152,170.7C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,255,255,0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 100px 0;
+            background: #f5f9ff;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 900px;
+            margin: 60px auto 0;
+        }
+        
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            z-index: 1;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
             flex: 1;
         }
-        .list-item {
-            margin-bottom: 5px;
-            padding-left: 15px;
-            position: relative;
-        }
-        .list-item:before {
-            content: "•";
-            color: #3498db;
-            position: absolute;
-            left: 0;
-        }
-        .tabs {
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
             display: flex;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #ddd;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
         }
-        .tab {
-            padding: 12px 20px;
-            cursor: pointer;
-            background: #f8f9fa;
-            border: 1px solid #ddd;
-            border-bottom: none;
-            border-radius: 5px 5px 0 0;
-            margin-right: 5px;
-            transition: background 0.3s;
-        }
-        .tab.active {
-            background: #3498db;
-            color: white;
-            border-color: #3498db;
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        .sample-text {
-            font-size: 14px;
-            color: #7f8c8d;
-            margin-top: 10px;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-        .save-section {
-            margin-top: 30px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 5px solid #27ae60;
-        }
-        .save-button {
-            background-color: #27ae60;
-            width: auto;
+        
+        .step h3 {
             margin-bottom: 10px;
-            padding: 12px 25px;
+            color: var(--secondary);
         }
-        .save-button:hover {
-            background-color: #219653;
+        
+        .step p {
+            color: var(--text-light);
+            max-width: 250px;
+            margin: 0 auto;
         }
-        .save-button:disabled {
-            background-color: #95a5a6;
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 100px 0;
+            background: white;
         }
-        .save-status {
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            text-align: center;
-            font-weight: 600;
+        
+        .benefits-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
         }
-        .save-success {
-            background-color: #d5f4e6;
-            color: #27ae60;
-            border: 1px solid #27ae60;
+        
+        .benefits-text {
+            flex: 1;
         }
-        .save-error {
-            background-color: #fadbd8;
-            color: #e74c3c;
-            border: 1px solid #e74c3c;
+        
+        .benefits-text h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 25px;
         }
-        .backend-url-input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+        
+        .benefits-text p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .benefits-list {
+            list-style: none;
+        }
+        
+        .benefits-list li {
             margin-bottom: 15px;
-            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
         }
-        .backend-url-input:focus {
-            outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        
+        .benefits-list i {
+            color: var(--success);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        .benefits-visual {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .benefits-visual img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .footer-column p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .benefits-content {
+                flex-direction: column;
+            }
+            
+            .steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .steps::before {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
         }
     </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>Job Advert Analyzer</h1>
-        <p class="subtitle">Extract structured job information from text using AI</p>
-        
-        <div class="input-group">
-            <label for="messageInput"><strong>Paste job advertisement text:</strong></label>
-            <textarea id="messageInput" placeholder="Paste job advertisement text here..."></textarea>
-            <div class="sample-text" onclick="loadSampleText()">Load sample job advertisement text</div>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>LaFab AI Posting</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#benefits">Benefits</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <button class="login-btn" onclick="scrollToLogin()">Login</button>
+            </nav>
         </div>
-        
-        <!-- <div class="input-group">
-            <label for="backendUrl"><strong>Backend API URL (CodeIgniter):</strong></label>
-            <input type="text" id="backendUrl" class="backend-url-input" placeholder="https://yourdomain.com/api/jobs/save" value="">
-            <small>Leave empty to use default: /api/jobs/save</small>
-        </div> -->
-        
-        <button id="sendButton" onclick="analyzeJobAdvert()">Analyze Job Advertisement</button>
-        
-        <div id="responseArea"></div>
-        
-        <!-- This section will be shown after analysis -->
-        <div id="saveSection" style="display: none;" class="save-section">
-            <h3>Save to Backend</h3>
-            <button id="saveButton" class="save-button" onclick="saveToBackend()">Save to Backend (CodeIgniter)</button>
-            <div id="saveStatus"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Revolutionize Your Hiring with AI-Powered Job Posting</h1>
+                <p>Automate, optimize, and accelerate your recruitment process with minimal human intervention. LaFab Solution's AI technology creates compelling job descriptions that attract top talent.</p>
+                <div class="cta-buttons">
+                    <a href="#cta" class="btn btn-primary">Get Started Free</a>
+                    <a href="#how-it-works" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Powerful Features</h2>
+                <p>Our AI-powered platform is designed to streamline your entire job posting workflow</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Generate optimized job postings in seconds, not hours. Reduce your time-to-hire significantly.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Optimized</h3>
+                    <p>Our advanced algorithms create compelling job descriptions that attract qualified candidates.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Performance Tracking</h3>
+                    <p>Monitor application rates and optimize your postings based on real performance data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Transforming job posting from a time-consuming task to an automated process</p>
+            </div>
+            <div class="steps">
+                <div class="step fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Input Job Details</h3>
+                    <p>Provide basic information about the position, skills required, and company culture.</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">2</div>
+                    <h3>AI Generation</h3>
+                    <p>Our AI analyzes your requirements and creates multiple optimized job description options.</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">3</div>
+                    <h3>Review & Post</h3>
+                    <p>Select your preferred version, make any tweaks, and publish across multiple platforms instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <div class="benefits-content">
+                <div class="benefits-text">
+                    <h2>Why Choose Our AI Job Posting Tool?</h2>
+                    <p>LaFab Solution's AI technology is designed specifically to address the challenges of modern recruitment.</p>
+                    <ul class="benefits-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Save 80% of Your Time</strong>
+                                <p>Reduce job description creation from hours to minutes</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Improve Candidate Quality</strong>
+                                <p>AI-optimized postings attract more qualified applicants</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Consistent Brand Voice</strong>
+                                <p>Maintain consistent messaging across all your job postings</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Multi-Platform Publishing</strong>
+                                <p>Post to multiple job boards with a single click</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="benefits-visual">
+                    <!-- Placeholder for an illustration -->
+                    <div style="background: var(--gradient); height: 300px; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-chart-bar" style="font-size: 4rem; opacity: 0.7;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Hiring Process?</h2>
+            <p>Join hundreds of companies already using LaFab AI Posting to streamline their recruitment and find better candidates faster.</p>
+            <button class="login-btn" onclick="scrollToLogin()" style="font-size: 1.2rem; padding: 18px 45px;">Start Posting with AI</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>LaFab AI Posting</h3>
+                    <p>Revolutionizing recruitment through AI-powered automation and optimization.</p>
+                    <p>LaFab Solution Company Limited</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> admin@lafabsolution.com</li>
+                        <li><i class="fas fa-phone"></i> +256 704 912354</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 LaFab Solution Company Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Sample job advertisement text
-        const sampleJobText = `Software Engineer at TechSolutions Inc.
-
-            We are looking for a skilled Software Engineer to join our dynamic team at TechSolutions Inc. This is a full-time position based in San Francisco, CA, with the option for remote work.
-
-            Job Description:
-            As a Software Engineer, you will be responsible for designing, developing, and maintaining high-quality software solutions. You will collaborate with cross-functional teams to define, design, and ship new features.
-
-            Key Responsibilities:
-            - Design and build advanced applications
-            - Collaborate with cross-functional teams to define, design, and ship new features
-            - Work with outside data sources and APIs
-            - Unit-test code for robustness, including edge cases, usability, and general reliability
-            - Work on bug fixing and improving application performance
-
-            Requirements:
-            - Bachelor's degree in Computer Science or related field
-            - 3+ years of software development experience
-            - Proficiency in JavaScript, Python, or Java
-            - Experience with cloud platforms (AWS, Azure, or GCP)
-            - Strong problem-solving skills and ability to work in a team environment
-
-            Preferred Qualifications:
-            - Experience with React or Angular
-            - Knowledge of database systems (SQL and NoSQL)
-            - Familiarity with Agile development methodologies
-
-            Salary and Benefits:
-            - Competitive salary range: $120,000 - $150,000 per year
-            - Comprehensive health, dental, and vision insurance
-            - 401(k) with company matching
-            - Flexible work hours and remote work options
-            - Professional development opportunities
-
-            Application Deadline: December 15, 2023
-
-            To apply, please send your resume to careers@techsolutions.com or apply through our website.`;
-
-        // Store the current job data globally
-        let currentJobData = null;
-        let currentOriginalText = '';
-
-        function loadSampleText() {
-            document.getElementById('messageInput').value = sampleJobText;
+        // Simple scroll animation for elements
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
         }
-
-        async function analyzeJobAdvert() {
-            const messageInput = document.getElementById('messageInput');
-            const sendButton = document.getElementById('sendButton');
-            const responseArea = document.getElementById('responseArea');
-            const saveSection = document.getElementById('saveSection');
-            
-            const jobText = messageInput.value.trim();
-            
-            if (!jobText) {
-                alert('Please enter job advertisement text');
-                return;
-            }
-            
-            // Hide save section initially
-            saveSection.style.display = 'none';
-            
-            // Disable button and show loading
-            sendButton.disabled = true;
-            sendButton.textContent = 'Analyzing...';
-            responseArea.innerHTML = '<div class="loading">Analyzing job advertisement with AI...</div>';
-            
-            try {
-                // Create the extensive prompt for job analysis
-                const prompt = `Extract and structure all information from the following job advertisement into a comprehensive JSON object. 
-
-                    IMPORTANT: Return ONLY valid JSON without any additional text, explanations, or markdown formatting.
-
-                    Required JSON structure:
-                    {
-                    "jobTitle": "string",
-                    "company": "string",
-                    "jobDescription": "string",
-                    "responsibilities": ["array of strings"],
-                    "requirements": ["array of strings"],
-                    "preferredQualifications": ["array of strings"],
-                    "skills": ["array of strings"],
-                    "salaryRange": "string",
-                    "location": "string",
-                    "employmentType": "string (e.g., Full-time, Part-time, Contract)",
-                    "workArrangement": "string (e.g., On-site, Remote, Hybrid)",
-                    "applicationDeadline": "string",
-                    "contactInfo": "string",
-                    "benefits": ["array of strings"],
-                    "experienceLevel": "string (e.g., Entry-level, Mid-level, Senior)",
-                    "educationRequirements": "string"
-                    }
-
-                    Rules for extraction:
-                    1. Extract the job title exactly as mentioned
-                    2. Identify the company name if mentioned
-                    3. Summarize the job description in 2-3 sentences
-                    4. List all responsibilities as separate array items
-                    5. List all requirements as separate array items
-                    6. List preferred qualifications separately from requirements
-                    7. Extract specific skills mentioned (programming languages, tools, etc.)
-                    8. Note salary range if mentioned
-                    9. Extract location details
-                    10. Identify employment type (full-time, part-time, etc.)
-                    11. Note work arrangement (on-site, remote, hybrid)
-                    12. Extract application deadline if mentioned
-                    13. Extract contact information (email, phone, application link)
-                    14. List all benefits mentioned
-                    15. Determine experience level based on requirements
-                    16. Note education requirements
-
-                    Job Advertisement Text:
-                ${jobText.substring(0, 4000)}`;
-
-                const COHERE_API_KEY = "<?= env('COHERE_API_KEY') ?>";
-                const COHERE_MODEL = "<?= env('COHERE_MODEL') ?>";
-
-                const response = await fetch("https://api.cohere.com/v2/chat", {
-                    method: "POST",
-                    headers: {
-                        "Authorization": "Bearer " + COHERE_API_KEY,
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        "stream": false,
-                        "model": COHERE_MODEL,
-                        "messages": [
-                            {
-                                "role": "user",
-                                "content": prompt
-                            }
-                        ]
-                    }),
-                });
-
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
-                }
-
-                const body = await response.json();
-                console.log('Full API Response:', body);
-                
-                // Store the original text
-                currentOriginalText = jobText;
-                
-                // Display the response
-                displayJobAnalysis(body, jobText);
-                
-                // Show the save section after successful analysis
-                saveSection.style.display = 'block';
-                
-            } catch (error) {
-                console.error('Error:', error);
-                responseArea.innerHTML = `<div class="response error">
-                    <strong>Error:</strong><br>${error.message}
-                </div>`;
-            } finally {
-                // Re-enable button
-                sendButton.disabled = false;
-                sendButton.textContent = 'Analyze Job Advertisement';
-            }
-        }
-
-        async function saveToBackend() {
-            const saveButton = document.getElementById('saveButton');
-            const saveStatus = document.getElementById('saveStatus');
         
-            
-            if (!currentJobData) {
-                alert('No job data to save. Please analyze a job first.');
-                return;
-            }
-            
-            // Disable save button and show loading
-            saveButton.disabled = true;
-            saveButton.textContent = 'Saving...';
-            saveStatus.innerHTML = '<div class="save-status">Sending data to backend...</div>';
-            
-            try {
-                // Prepare data for backend
-                // console.log(currentJobData);
-                const postData = {
-                    job_data: currentJobData,
-                    // original_text: currentOriginalText,
-                    // analyzed_at: new Date().toISOString()
-                };
-                
-                // console.log('Sending data to backend:', postData);
-                
-                let backendUrl = 'api/job-parser/process';
-                const response = await fetch(backendUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest' // For CodeIgniter AJAX detection
-                    },
-                    body: JSON.stringify(postData)
-                });
-                
-                const result = await response.json();
-                
-                if (response.ok) {
-                    saveStatus.innerHTML = `<div class="save-status save-success">✓ Successfully saved to backend! ${result.message || ''}</div>`;
-                    console.log('Backend response:', result.data);
-                } else {
-                    throw new Error(result.message || `HTTP ${response.status}: Failed to save job data`);
+        function handleScrollAnimation() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(el => {
+                if (isElementInViewport(el)) {
+                    el.style.opacity = 1;
+                    el.style.transform = 'translateY(0)';
                 }
-                
-            } catch (error) {
-                console.error('Error saving to backend:', error);
-                saveStatus.innerHTML = `<div class="save-status save-error">✗ Error saving to backend: ${error.message}</div>`;
-            } finally {
-                // Re-enable save button
-                saveButton.disabled = false;
-                saveButton.textContent = 'Save to Backend (CodeIgniter)';
-            }
-        }
-
-        function displayJobAnalysis(responseData, originalText) {
-            const responseArea = document.getElementById('responseArea');
-            
-            let html = '<div class="response success">';
-            html += '<h2>Job Advertisement Analysis</h2>';
-            
-            // Extract JSON from the response
-            const responseText = responseData.message.content[0].text;
-            
-            // Try to parse JSON from the response
-            let jobData;
-            try {
-                // Extract JSON from the response (handling potential formatting)
-                const jsonMatch = responseText.match(/\{[\s\S]*\}/);
-                if (jsonMatch) {
-                    jobData = JSON.parse(jsonMatch[0]);
-                    currentJobData = jobData; // Store for saving
-                } else {
-                    throw new Error('No JSON found in response');
-                }
-            } catch (e) {
-                // If JSON parsing fails, show the raw response
-                html += `<div class="error">Failed to parse JSON response. Showing raw output:</div>`;
-                html += `<div class="message-content">${responseText}</div>`;
-                html += '</div>';
-                responseArea.innerHTML = html;
-                return;
-            }
-            
-            // Create tabs for different views
-            html += `
-                <div class="tabs">
-                    <div class="tab active" onclick="switchTab('structured')">Structured View</div>
-                    <div class="tab" onclick="switchTab('json')">Raw JSON</div>
-                    <div class="tab" onclick="switchTab('original')">Original Text</div>
-                </div>
-            `;
-            
-            // Structured View
-            html += `<div id="structured-view" class="tab-content active">`;
-            
-            // Basic job info
-            html += `
-                <div class="job-details">
-                    <h3>Job Information</h3>
-                    <div class="detail-item">
-                        <span class="detail-label">Job Title:</span>
-                        <span class="detail-value">${jobData.jobTitle || 'Not specified'}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Company:</span>
-                        <span class="detail-value">${jobData.company || 'Not specified'}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Location:</span>
-                        <span class="detail-value">${jobData.location || 'Not specified'}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Employment Type:</span>
-                        <span class="detail-value">${jobData.employmentType || 'Not specified'}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Work Arrangement:</span>
-                        <span class="detail-value">${jobData.workArrangement || 'Not specified'}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Experience Level:</span>
-                        <span class="detail-value">${jobData.experienceLevel || 'Not specified'}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Salary Range:</span>
-                        <span class="detail-value">${jobData.salaryRange || 'Not specified'}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Application Deadline:</span>
-                        <span class="detail-value">${jobData.applicationDeadline || 'Not specified'}</span>
-                    </div>
-                </div>
-            `;
-            
-            // Job Description
-            if (jobData.jobDescription) {
-                html += `
-                    <div class="job-details">
-                        <h3>Job Description</h3>
-                        <div class="detail-value">${jobData.jobDescription}</div>
-                    </div>
-                `;
-            }
-            
-            // Responsibilities
-            if (jobData.responsibilities && jobData.responsibilities.length > 0) {
-                html += `
-                    <div class="job-details">
-                        <h3>Key Responsibilities</h3>
-                        ${jobData.responsibilities.map(resp => `<div class="list-item">${resp}</div>`).join('')}
-                    </div>
-                `;
-            }
-            
-            // Requirements
-            if (jobData.requirements && jobData.requirements.length > 0) {
-                html += `
-                    <div class="job-details">
-                        <h3>Requirements</h3>
-                        ${jobData.requirements.map(req => `<div class="list-item">${req}</div>`).join('')}
-                    </div>
-                `;
-            }
-            
-            // Skills
-            if (jobData.skills && jobData.skills.length > 0) {
-                html += `
-                    <div class="job-details">
-                        <h3>Required Skills</h3>
-                        ${jobData.skills.map(skill => `<div class="list-item">${skill}</div>`).join('')}
-                    </div>
-                `;
-            }
-            
-            // Benefits
-            if (jobData.benefits && jobData.benefits.length > 0) {
-                html += `
-                    <div class="job-details">
-                        <h3>Benefits</h3>
-                        ${jobData.benefits.map(benefit => `<div class="list-item">${benefit}</div>`).join('')}
-                    </div>
-                `;
-            }
-            
-            // Contact Information
-            if (jobData.contactInfo) {
-                html += `
-                    <div class="job-details">
-                        <h3>Contact Information</h3>
-                        <div class="detail-value">${jobData.contactInfo}</div>
-                    </div>
-                `;
-            }
-            
-            html += `</div>`; // End structured view
-            
-            // JSON View
-            html += `
-                <div id="json-view" class="tab-content">
-                    <h3>Raw JSON Output</h3>
-                    <div class="json-output">${JSON.stringify(jobData, null, 2)}</div>
-                </div>
-            `;
-            
-            // Original Text View
-            html += `
-                <div id="original-view" class="tab-content">
-                    <h3>Original Job Advertisement Text</h3>
-                    <div class="message-content">${originalText}</div>
-                </div>
-            `;
-            
-            // API Usage Information
-            if (responseData.usage) {
-                html += '<div class="usage-info">';
-                html += '<strong>API Usage:</strong><br>';
-                
-                if (responseData.usage.billed_units) {
-                    html += `Billed - Input: ${responseData.usage.billed_units.input_tokens}, Output: ${responseData.usage.billed_units.output_tokens}<br>`;
-                }
-                
-                if (responseData.usage.tokens) {
-                    html += `Actual - Input: ${responseData.usage.tokens.input_tokens}, Output: ${responseData.usage.tokens.output_tokens}`;
-                }
-                
-                html += '</div>';
-            }
-            
-            html += '</div>'; // End response
-            
-            responseArea.innerHTML = html;
-        }
-
-        function switchTab(tabName) {
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
             });
-            
-            // Deactivate all tabs
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Activate selected tab
-            document.getElementById(`${tabName}-view`).classList.add('active');
-            event.target.classList.add('active');
         }
-
-        // Allow sending message with Enter key (Ctrl+Enter or Cmd+Enter)
-        document.getElementById('messageInput').addEventListener('keydown', function(e) {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-                analyzeJobAdvert();
-            }
+        
+        // Initialize elements for animation
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
         });
-
-        // Also allow Enter to send (with shift+enter for new line)
-        document.getElementById('messageInput').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                analyzeJobAdvert();
-            }
-        });
-
-        // Load sample text on page load for demonstration
-        window.onload = function() {
-            loadSampleText();
-        };
+        
+        // Scroll to login function
+        function scrollToLogin() {
+            // In a real implementation, this would redirect to the login page
+            // alert('Redirecting to login page...');
+            window.location.href = '/auth/login'; // Uncomment in actual implementation
+        }
+        
+        // Handle scroll events
+        window.addEventListener('scroll', handleScrollAnimation);
+        window.addEventListener('load', handleScrollAnimation);
+        
+        // Initial check on page load
+        document.addEventListener('DOMContentLoaded', handleScrollAnimation);
     </script>
 </body>
 </html>
