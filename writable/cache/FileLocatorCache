@@ -1,0 +1,818 @@
+<?php return array (
+  'search' => 
+  array (
+    'Config/Services' => 
+    array (
+      'php' => 
+      array (
+        1 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Config\\Services.php',
+          1 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Config\\Services.php',
+        ),
+      ),
+    ),
+    'Config/Registrar.php' => 
+    array (
+      'php' => 
+      array (
+        1 => 
+        array (
+        ),
+      ),
+    ),
+    'Helpers/kint_helper' => 
+    array (
+      'php' => 
+      array (
+        1 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Helpers\\kint_helper.php',
+        ),
+      ),
+    ),
+    'Helpers/url_helper' => 
+    array (
+      'php' => 
+      array (
+        1 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Helpers\\url_helper.php',
+        ),
+      ),
+    ),
+    'Helpers/filesystem_helper' => 
+    array (
+      'php' => 
+      array (
+        1 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Helpers\\filesystem_helper.php',
+        ),
+      ),
+    ),
+    'Config/Events.php' => 
+    array (
+      'php' => 
+      array (
+        1 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Config\\Events.php',
+        ),
+      ),
+    ),
+    'Helpers/array_helper' => 
+    array (
+      'php' => 
+      array (
+        1 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Helpers\\array_helper.php',
+        ),
+      ),
+    ),
+    'Config/Filters.php' => 
+    array (
+      'php' => 
+      array (
+        1 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Config\\Filters.php',
+          1 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Config\\Filters.php',
+        ),
+      ),
+    ),
+    'Config/Routes.php' => 
+    array (
+      'php' => 
+      array (
+        1 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Config\\Routes.php',
+        ),
+      ),
+    ),
+    'Helpers/security_helper' => 
+    array (
+      'php' => 
+      array (
+        1 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Helpers\\security_helper.php',
+        ),
+      ),
+    ),
+    'Helpers/inflector_helper' => 
+    array (
+      'php' => 
+      array (
+        1 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Helpers\\inflector_helper.php',
+        ),
+      ),
+    ),
+    'Language/en/CLI.php' => 
+    array (
+      'php' => 
+      array (
+        0 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Language\\en\\CLI.php',
+        ),
+      ),
+    ),
+    'Language/en/Migrations.php' => 
+    array (
+      'php' => 
+      array (
+        0 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Language\\en\\Migrations.php',
+        ),
+      ),
+    ),
+    'Language/en/HTTP.php' => 
+    array (
+      'php' => 
+      array (
+        0 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Language\\en\\HTTP.php',
+        ),
+      ),
+    ),
+    'Language/en/Errors.php' => 
+    array (
+      'php' => 
+      array (
+        0 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Language\\en\\Errors.php',
+        ),
+      ),
+    ),
+    'Language/en/Core.php' => 
+    array (
+      'php' => 
+      array (
+        0 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Language\\en\\Core.php',
+        ),
+      ),
+    ),
+    'Helpers/number_helper' => 
+    array (
+      'php' => 
+      array (
+        1 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Helpers\\number_helper.php',
+        ),
+      ),
+    ),
+    'Language/en/Number.php' => 
+    array (
+      'php' => 
+      array (
+        0 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Language\\en\\Number.php',
+        ),
+      ),
+    ),
+  ),
+  'findQualifiedNameFromPath' => 
+  array (
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Config\\Services.php' => 'Config\\Services',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Cache\\ClearCache.php' => 'CodeIgniter\\Commands\\Cache\\ClearCache',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Cache\\InfoCache.php' => 'CodeIgniter\\Commands\\Cache\\InfoCache',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Database\\CreateDatabase.php' => 'CodeIgniter\\Commands\\Database\\CreateDatabase',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Database\\Migrate.php' => 'CodeIgniter\\Commands\\Database\\Migrate',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Database\\MigrateRefresh.php' => 'CodeIgniter\\Commands\\Database\\MigrateRefresh',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Database\\MigrateRollback.php' => 'CodeIgniter\\Commands\\Database\\MigrateRollback',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Database\\MigrateStatus.php' => 'CodeIgniter\\Commands\\Database\\MigrateStatus',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Database\\Seed.php' => 'CodeIgniter\\Commands\\Database\\Seed',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Database\\ShowTableInfo.php' => 'CodeIgniter\\Commands\\Database\\ShowTableInfo',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Encryption\\GenerateKey.php' => 'CodeIgniter\\Commands\\Encryption\\GenerateKey',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\CellGenerator.php' => 'CodeIgniter\\Commands\\Generators\\CellGenerator',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\CommandGenerator.php' => 'CodeIgniter\\Commands\\Generators\\CommandGenerator',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\ConfigGenerator.php' => 'CodeIgniter\\Commands\\Generators\\ConfigGenerator',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\ControllerGenerator.php' => 'CodeIgniter\\Commands\\Generators\\ControllerGenerator',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\EntityGenerator.php' => 'CodeIgniter\\Commands\\Generators\\EntityGenerator',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\FilterGenerator.php' => 'CodeIgniter\\Commands\\Generators\\FilterGenerator',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\MigrationGenerator.php' => 'CodeIgniter\\Commands\\Generators\\MigrationGenerator',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\ModelGenerator.php' => 'CodeIgniter\\Commands\\Generators\\ModelGenerator',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\ScaffoldGenerator.php' => 'CodeIgniter\\Commands\\Generators\\ScaffoldGenerator',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\SeederGenerator.php' => 'CodeIgniter\\Commands\\Generators\\SeederGenerator',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\TestGenerator.php' => 'CodeIgniter\\Commands\\Generators\\TestGenerator',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\ValidationGenerator.php' => 'CodeIgniter\\Commands\\Generators\\ValidationGenerator',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\cell.tpl.php' => false,
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\cell_view.tpl.php' => false,
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\command.tpl.php' => false,
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\config.tpl.php' => false,
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\controller.tpl.php' => false,
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\entity.tpl.php' => false,
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\filter.tpl.php' => false,
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\migration.tpl.php' => false,
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\model.tpl.php' => false,
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\seeder.tpl.php' => false,
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\test.tpl.php' => false,
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\validation.tpl.php' => false,
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Help.php' => 'CodeIgniter\\Commands\\Help',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Housekeeping\\ClearDebugbar.php' => 'CodeIgniter\\Commands\\Housekeeping\\ClearDebugbar',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Housekeeping\\ClearLogs.php' => 'CodeIgniter\\Commands\\Housekeeping\\ClearLogs',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\ListCommands.php' => 'CodeIgniter\\Commands\\ListCommands',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Server\\Serve.php' => 'CodeIgniter\\Commands\\Server\\Serve',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Translation\\LocalizationFinder.php' => 'CodeIgniter\\Commands\\Translation\\LocalizationFinder',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Translation\\LocalizationSync.php' => 'CodeIgniter\\Commands\\Translation\\LocalizationSync',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\ConfigCheck.php' => 'CodeIgniter\\Commands\\Utilities\\ConfigCheck',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Environment.php' => 'CodeIgniter\\Commands\\Utilities\\Environment',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\FilterCheck.php' => 'CodeIgniter\\Commands\\Utilities\\FilterCheck',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Namespaces.php' => 'CodeIgniter\\Commands\\Utilities\\Namespaces',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Optimize.php' => 'CodeIgniter\\Commands\\Utilities\\Optimize',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\PhpIniCheck.php' => 'CodeIgniter\\Commands\\Utilities\\PhpIniCheck',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Publish.php' => 'CodeIgniter\\Commands\\Utilities\\Publish',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes.php' => 'CodeIgniter\\Commands\\Utilities\\Routes',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\AutoRouteCollector.php' => 'CodeIgniter\\Commands\\Utilities\\Routes\\AutoRouteCollector',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\AutoRouterImproved\\AutoRouteCollector.php' => 'CodeIgniter\\Commands\\Utilities\\Routes\\AutoRouterImproved\\AutoRouteCollector',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\AutoRouterImproved\\ControllerMethodReader.php' => 'CodeIgniter\\Commands\\Utilities\\Routes\\AutoRouterImproved\\ControllerMethodReader',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\ControllerFinder.php' => 'CodeIgniter\\Commands\\Utilities\\Routes\\ControllerFinder',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\ControllerMethodReader.php' => 'CodeIgniter\\Commands\\Utilities\\Routes\\ControllerMethodReader',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\FilterCollector.php' => 'CodeIgniter\\Commands\\Utilities\\Routes\\FilterCollector',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\FilterFinder.php' => 'CodeIgniter\\Commands\\Utilities\\Routes\\FilterFinder',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\SampleURIGenerator.php' => 'CodeIgniter\\Commands\\Utilities\\Routes\\SampleURIGenerator',
+  ),
+  'getClassname' => 
+  array (
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Config\\Filters.php' => 'Config\\Filters',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Config\\Filters.php' => 'CodeIgniter\\Config\\Filters',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Database\\Migrations\\2024_01_01_000000_CreateCompaniesTable.php' => 'App\\Database\\Migrations\\CreateCompaniesTable',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Database\\Migrations\\2024_01_01_000000_CreateUsersTable.php' => 'App\\Database\\Migrations\\CreateUsersTable',
+    'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Database\\Migrations\\2025-08-28-123020_CreateJobsTable.php' => 'App\\Database\\Migrations\\CreateJobsTable',
+  ),
+  'listFiles' => 
+  array (
+    'Commands/' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Cache\\ClearCache.php',
+      1 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Cache\\InfoCache.php',
+      2 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Database\\CreateDatabase.php',
+      3 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Database\\Migrate.php',
+      4 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Database\\MigrateRefresh.php',
+      5 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Database\\MigrateRollback.php',
+      6 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Database\\MigrateStatus.php',
+      7 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Database\\Seed.php',
+      8 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Database\\ShowTableInfo.php',
+      9 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Encryption\\GenerateKey.php',
+      10 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\CellGenerator.php',
+      11 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\CommandGenerator.php',
+      12 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\ConfigGenerator.php',
+      13 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\ControllerGenerator.php',
+      14 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\EntityGenerator.php',
+      15 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\FilterGenerator.php',
+      16 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\MigrationGenerator.php',
+      17 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\ModelGenerator.php',
+      18 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\ScaffoldGenerator.php',
+      19 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\SeederGenerator.php',
+      20 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\TestGenerator.php',
+      21 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\ValidationGenerator.php',
+      22 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\cell.tpl.php',
+      23 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\cell_view.tpl.php',
+      24 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\command.tpl.php',
+      25 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\config.tpl.php',
+      26 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\controller.tpl.php',
+      27 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\entity.tpl.php',
+      28 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\filter.tpl.php',
+      29 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\migration.tpl.php',
+      30 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\model.tpl.php',
+      31 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\seeder.tpl.php',
+      32 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\test.tpl.php',
+      33 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Generators\\Views\\validation.tpl.php',
+      34 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Help.php',
+      35 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Housekeeping\\ClearDebugbar.php',
+      36 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Housekeeping\\ClearLogs.php',
+      37 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\ListCommands.php',
+      38 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Server\\Serve.php',
+      39 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Translation\\LocalizationFinder.php',
+      40 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Translation\\LocalizationSync.php',
+      41 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\ConfigCheck.php',
+      42 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Environment.php',
+      43 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\FilterCheck.php',
+      44 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Namespaces.php',
+      45 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Optimize.php',
+      46 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\PhpIniCheck.php',
+      47 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Publish.php',
+      48 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes.php',
+      49 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\AutoRouteCollector.php',
+      50 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\AutoRouterImproved\\AutoRouteCollector.php',
+      51 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\AutoRouterImproved\\ControllerMethodReader.php',
+      52 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\ControllerFinder.php',
+      53 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\ControllerMethodReader.php',
+      54 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\FilterCollector.php',
+      55 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\FilterFinder.php',
+      56 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\SampleURIGenerator.php',
+    ),
+  ),
+  'locateFile' => 
+  array (
+    'CodeIgniter\\Commands\\Generators\\Views\\seeder.tpl.php' => 
+    array (
+      'Views' => 
+      array (
+        'php' => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\/Commands/Generators/Views/seeder.tpl.php',
+      ),
+    ),
+    'CodeIgniter\\Commands\\Generators\\Views\\model.tpl.php' => 
+    array (
+      'Views' => 
+      array (
+        'php' => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\/Commands/Generators/Views/model.tpl.php',
+      ),
+    ),
+    'CodeIgniter\\Commands\\Generators\\Views\\controller.tpl.php' => 
+    array (
+      'Views' => 
+      array (
+        'php' => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\/Commands/Generators/Views/controller.tpl.php',
+      ),
+    ),
+    'layouts/dashboard.php' => 
+    array (
+      'Views' => 
+      array (
+        'php' => false,
+      ),
+    ),
+    'companies/create.php' => 
+    array (
+      'Views' => 
+      array (
+        'php' => false,
+      ),
+    ),
+  ),
+  'listNamespaceFiles' => 
+  array (
+    'CodeIgniter' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Config' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'App' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+        0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Database\\Migrations\\2024_01_01_000000_CreateCompaniesTable.php',
+        1 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Database\\Migrations\\2024_01_01_000000_CreateUsersTable.php',
+        2 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Database\\Migrations\\2025-08-28-123020_CreateJobsTable.php',
+      ),
+    ),
+    'thiagoalessio\\TesseractOCR' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'phpseclib3' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'phpDocumentor\\Reflection' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Webmozart\\Assert' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Polyfill\\Php84' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Polyfill\\Php83' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Polyfill\\Php81' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Polyfill\\Php80' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Polyfill\\Mbstring' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Polyfill\\Intl\\Normalizer' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Polyfill\\Intl\\Grapheme' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Polyfill\\Ctype' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Contracts\\Translation' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Contracts\\Service' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Contracts\\EventDispatcher' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Component\\Yaml' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Component\\VarDumper' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Component\\Validator' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Component\\TypeInfo' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Component\\String' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Component\\Stopwatch' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Component\\Serializer' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Component\\PropertyInfo' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Component\\Process' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Component\\OptionsResolver' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Component\\Finder' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Component\\Filesystem' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Component\\EventDispatcher' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Symfony\\Component\\Console' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'React\\Stream' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'React\\Socket' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'React\\Promise' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'React\\EventLoop' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'React\\Dns' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'React\\ChildProcess' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'React\\Cache' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Psr\\Log' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Psr\\Http\\Message' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Psr\\Http\\Client' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Psr\\EventDispatcher' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Psr\\Container' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Psr\\Cache' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Predis' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'PhpParser' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'PhpOption' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'PhpOffice\\PhpWord' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'PhpOffice\\Math' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'PhpCsFixer' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'ParagonIE\\ConstantTime' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'PHPStan\\PhpDocParser' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Nexus\\CsConfig' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Monolog' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Laminas\\Escaper' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Kint' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'GuzzleHttp\\Psr7' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'GuzzleHttp\\Promise' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'GuzzleHttp' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'GrahamCampbell\\ResultType' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Google\\Service' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Google\\Auth' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Google' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Gioni06\\Gpt3Tokenizer' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Firebase\\JWT' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Fidry\\CpuCoreCounter' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Faker' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Evenement' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Dotenv' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Doctrine\\Deprecations' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'DeepCopy' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'CodeIgniter\\CodingStandard' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Clue\\React\\NDJson' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Aimeos' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+    'Adbar' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+      ),
+    ),
+  ),
+);

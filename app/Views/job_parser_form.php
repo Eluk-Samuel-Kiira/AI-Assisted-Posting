@@ -10,8 +10,8 @@
             <i class="fas fa-bars"></i>
         </button>
         <div>
-            <h5 class="mb-0">Job Advert Analyzer</h5>
-            <small>AI-powered job advertisement analysis</small>
+            <h5 class="mb-0">Job Posting</h5>
+            <small>Welcome back, <?= session()->get('username') ?? 'User' ?></small>
         </div>
     </div>
 </div>
@@ -21,8 +21,8 @@
     <div class="container-fluid py-4">
         <div class="row align-items-center">
             <div class="col">
-                <h1 class="h2 mb-1 text-primary">Job Advert Analyzer</h1>
-                <p class="text-muted mb-0">Extract structured job information from text using AI</p>
+                <h1 class="h2 mb-1 text-primary">Job Posting Overview</h1>
+                <p class="text-muted mb-0">Welcome back, <?= session()->get('username') ?? 'User' ?>! Here's your AI-powered hiring insights.</p>
             </div>
             <div class="col-auto">
                 <button class="btn btn-primary sidebar-toggle" onclick="toggleSidebar()">
@@ -33,7 +33,6 @@
         </div>
     </div>
 </div>
-
 <!-- Main Content -->
 <div class="container-fluid py-4">
     <div class="card border-0 shadow-sm">

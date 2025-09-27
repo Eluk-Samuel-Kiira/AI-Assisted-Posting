@@ -42,7 +42,15 @@
                 <a href="<?= base_url('job-parser') ?>" class="nav-link text-white d-flex align-items-center px-3 py-3 mb-2 rounded-3 <?= current_url() == base_url('job-parser') ? 'active' : '' ?>">
                     <i class="fas fa-plus me-3 fs-5"></i>
                     <span class="menu-text">New Job Post</span>
-                    <span class="badge bg-success ms-auto">18</span>
+                    <span class="badge bg-success ms-auto">38</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="<?= base_url('companies') ?>" class="nav-link text-white d-flex align-items-center px-3 py-3 mb-2 rounded-3 <?= current_url() == base_url('companies') ? 'active' : '' ?>">
+                    <i class="fas fa-university me-3 fs-5"></i>
+                    <span class="menu-text">Company</span>
+                    <span class="badge bg-primary ms-auto">12</span>
                 </a>
             </li>
             
@@ -107,7 +115,7 @@
 
     <!-- Sidebar Toggle -->
     <div class="sidebar-footer p-3 border-top border-dark d-none d-lg-block">
-        <button class="btn btn-outline-light w-100 sidebar-toggle" onclick="toggleSidebar()">
+        <button class="btn btn-outline-light w-100 sidebar-toggle" id="sidebarToggle">
             <i class="fas fa-chevron-left me-2"></i>
             <span>Collapse Menu</span>
         </button>

@@ -10,8 +10,8 @@
             <i class="fas fa-bars"></i>
         </button>
         <div>
-            <h5 class="mb-0">Job Postings</h5>
-            <small>Manage your AI-generated job listings</small>
+            <h5 class="mb-0">Job Posting</h5>
+            <small>Welcome back, <?= session()->get('username') ?? 'User' ?></small>
         </div>
     </div>
 </div>
@@ -21,20 +21,14 @@
     <div class="container-fluid py-4">
         <div class="row align-items-center">
             <div class="col">
-                <h1 class="h2 mb-1 text-primary">Job Postings</h1>
-                <p class="text-muted mb-0">Manage and view your AI-generated job listings</p>
+                <h1 class="h2 mb-1 text-primary">Job Posting Overview</h1>
+                <p class="text-muted mb-0">Welcome back, <?= session()->get('username') ?? 'User' ?>! Here's your AI-powered hiring insights.</p>
             </div>
             <div class="col-auto">
-                <div class="d-flex gap-2">
-                    <span class="badge bg-primary fs-6"><?= count($jobs) ?> Jobs</span>
-                    <a href="<?= base_url('job-postings') ?>" class="btn btn-outline-primary btn-sm">
-                        <i class="fas fa-sync-alt me-1"></i>Refresh
-                    </a>
-                    <button class="btn btn-primary sidebar-toggle" onclick="toggleSidebar()">
-                        <i class="fas fa-bars me-2"></i>
-                        <span>Menu</span>
-                    </button>
-                </div>
+                <button class="btn btn-primary sidebar-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars me-2"></i>
+                    <span>Menu</span>
+                </button>
             </div>
         </div>
     </div>
@@ -85,9 +79,42 @@
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <h4 class="job-title mb-1">
-                                                        <a href="<?= base_url('job-postings/view/' . $job['id']) ?>" class="text-decoration-none text-dark">
-                                                            <?= esc($job['job_title'] ?? 'Untitled Job') ?>
-                                                        </a>
+                                                        <h5 class="job-title mb-2">
+                                                            <a href="<?= base_url('job-postings/view/' . $job['id']) ?>" 
+                                                            class="job-title-link" 
+                                                            title="<?= esc($job['job_title'] ?? 'Untitled Job') ?>">
+                                                                <?= esc($job['job_title'] ?? 'Untitled Job') ?>
+                                                            </a>
+                                                        </h5>
+
+                                                        <style>
+                                                            .job-title-link {
+                                                                display: block;
+                                                                overflow: hidden;
+                                                                text-overflow: ellipsis;
+                                                                white-space: nowrap;
+                                                                max-width: 100%;
+                                                                text-decoration: none;
+                                                                color: #2c3e50;
+                                                                font-weight: 600;
+                                                                transition: color 0.3s ease;
+                                                            }
+
+                                                            .job-title-link:hover {
+                                                                color: #3498db;
+                                                            }
+
+                                                            /* Responsive behavior */
+                                                            @media (max-width: 768px) {
+                                                                .job-title-link {
+                                                                    white-space: normal;
+                                                                    display: -webkit-box;
+                                                                    -webkit-line-clamp: 2;
+                                                                    -webkit-box-orient: vertical;
+                                                                    overflow: hidden;
+                                                                }
+                                                            }
+                                                        </style>
                                                     </h4>
                                                     <div class="job-meta text-muted mb-2">
                                                         <?php if (!empty($job['company'])): ?>

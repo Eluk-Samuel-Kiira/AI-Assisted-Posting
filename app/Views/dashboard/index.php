@@ -11,7 +11,7 @@
         </button>
         <div>
             <h5 class="mb-0">Dashboard</h5>
-            <small>Welcome back, <?= session()->get('full_name') ?? 'User' ?></small>
+            <small>Welcome back, <?= session()->get('username') ?? 'User' ?></small>
         </div>
     </div>
 </div>
@@ -22,7 +22,7 @@
         <div class="row align-items-center">
             <div class="col">
                 <h1 class="h2 mb-1 text-primary">Dashboard Overview</h1>
-                <p class="text-muted mb-0">Welcome back, <?= session()->get('full_name') ?? 'User' ?>! Here's your AI-powered hiring insights.</p>
+                <p class="text-muted mb-0">Welcome back, <?= session()->get('username') ?? 'User' ?>! Here's your AI-powered hiring insights.</p>
             </div>
             <div class="col-auto">
                 <button class="btn btn-primary sidebar-toggle" onclick="toggleSidebar()">
@@ -33,7 +33,6 @@
         </div>
     </div>
 </div>
-
 <!-- Main Content -->
 <div class="container-fluid py-4">
     <!-- Statistics Cards -->

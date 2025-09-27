@@ -3,12 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title ?? 'Dashboard - LaFab AI Posting' ?></title>
+    <title><?= $title ?? 'LaFab AI Posting' ?></title>
+
+     <!-- Favicon References -->
+    <link rel="icon" type="image/svg+xml" href="<?= base_url('favicon.svg') ?>">
+    <link rel="shortcut icon" href="<?= base_url('favicon.svg') ?>" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="<?= base_url('favicon.svg') ?>">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- SIDEBAR SCRIPT - LOAD FIRST -->
+    <script>
+        // Define functions in global scope IMMEDIATELY
+        window.toggleSidebar = function() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('mobileOverlay');
+            
+            if (!sidebar) return;
+            
+            if (window.innerWidth < 992) {
+                sidebar.classList.toggle('mobile-open');
+                if (overlay) overlay.classList.toggle('active');
+            } else {
+                sidebar.classList.toggle('collapsed');
+                localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
+                updateToggleButton();
+            }
+        }
+
+        window.closeSidebar = function() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('mobileOverlay');
+            if (sidebar) sidebar.classList.remove('mobile-open');
+            if (overlay) overlay.classList.remove('active');
+        }
+
+        window.updateToggleButton = function() {
+            const sidebar = document.querySelector('.sidebar');
+            const buttons = document.querySelectorAll('.sidebar-toggle');
+            
+            if (!sidebar) return;
+            
+            buttons.forEach(button => {
+                const icon = button.querySelector('i');
+                const span = button.querySelector('span');
+                if (sidebar.classList.contains('collapsed')) {
+                    if (icon) icon.className = 'fas fa-chevron-right me-2';
+                    if (span) span.textContent = 'Expand Menu';
+                } else {
+                    if (icon) icon.className = 'fas fa-chevron-left me-2';
+                    if (span) span.textContent = 'Collapse Menu';
+                }
+            });
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('mobileOverlay');
+            
+            if (sidebar && window.innerWidth >= 992 && isCollapsed) {
+                sidebar.classList.add('collapsed');
+            }
+            
+            updateToggleButton();
+
+            // Close sidebar on mobile menu click
+            document.querySelectorAll('.sidebar-menu .nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth < 992) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Close sidebar on overlay click
+            if (overlay) {
+                overlay.addEventListener('click', closeSidebar);
+            }
+
+            // Add event listeners to all toggle buttons
+            document.querySelectorAll('.sidebar-toggle').forEach(btn => {
+                btn.addEventListener('click', toggleSidebar);
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 992) {
+                closeSidebar();
+            }
+        });
+    </script>
+    
     <style>
         :root {
             --primary: #3498db;
@@ -101,83 +192,7 @@
         </main>
     </div>
 
-    
-    <script>
-        // Initialize Bootstrap tabs
-        var analysisTabs = new bootstrap.Tab(document.getElementById('structured-tab'));
-
-        // Define functions in global scope
-        window.toggleSidebar = function() {
-            const sidebar = document.querySelector('.sidebar');
-            const overlay = document.getElementById('mobileOverlay');
-            
-            if (window.innerWidth < 992) {
-                sidebar.classList.toggle('mobile-open');
-                overlay.classList.toggle('active');
-            } else {
-                sidebar.classList.toggle('collapsed');
-                localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
-                updateToggleButton();
-            }
-        }
-
-        window.closeSidebar = function() {
-            const sidebar = document.querySelector('.sidebar');
-            const overlay = document.getElementById('mobileOverlay');
-            sidebar.classList.remove('mobile-open');
-            overlay.classList.remove('active');
-        }
-
-        window.updateToggleButton = function() {
-            const sidebar = document.querySelector('.sidebar');
-            const buttons = document.querySelectorAll('.sidebar-toggle');
-            
-            buttons.forEach(button => {
-                const icon = button.querySelector('i');
-                const span = button.querySelector('span');
-                if (sidebar.classList.contains('collapsed')) {
-                    icon.className = 'fas fa-chevron-right me-2';
-                    if (span) span.textContent = 'Expand Menu';
-                } else {
-                    icon.className = 'fas fa-chevron-left me-2';
-                    if (span) span.textContent = 'Collapse Menu';
-                }
-            });
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
-            const sidebar = document.querySelector('.sidebar');
-            const overlay = document.getElementById('mobileOverlay');
-            
-            if (window.innerWidth >= 992 && isCollapsed) {
-                sidebar.classList.add('collapsed');
-            }
-            
-            updateToggleButton();
-
-            // Close sidebar when clicking on mobile menu items
-            document.querySelectorAll('.sidebar-menu .nav-link').forEach(link => {
-                link.addEventListener('click', function() {
-                    if (window.innerWidth < 992) {
-                        closeSidebar();
-                    }
-                });
-            });
-
-            // Close sidebar when clicking overlay
-            overlay.addEventListener('click', closeSidebar);
-        });
-
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth >= 992) {
-                closeSidebar();
-            }
-        });
-    </script>
-    
+    <!-- Page-specific scripts -->
     <?= $this->renderSection('scripts') ?>
 </body>
 </html>

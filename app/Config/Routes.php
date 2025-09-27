@@ -40,5 +40,13 @@ $routes->group('', ['filter' => 'auth'], function($routes) {
     $routes->get('job-postings', 'JobParser::getJobs');
     $routes->get('job-postings/view/(:num)', 'JobParser::view/$1');
     $routes->get('job-postings/delete/(:num)', 'JobParser::delete/$1');
+
+    // Companies
+    $routes->get('companies', 'CompanyController::index');
+    $routes->get('companies/create', 'CompanyController::create');
+    $routes->get('companies/edit/(:num)', 'CompanyController::edit/$1');
+    $routes->post('companies/store', 'CompanyController::store');
+    $routes->post('companies/update/(:num)', 'CompanyController::update/$1');
+    $routes->get('companies/delete/(:num)', 'CompanyController::delete/$1');
     
 });
