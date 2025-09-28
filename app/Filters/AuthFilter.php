@@ -13,7 +13,7 @@ class AuthFilter implements FilterInterface
         // Check if user is logged in
         if (!session()->get('logged_in')) {
             session()->setFlashdata('error', 'Please login to access this page.');
-            return redirect()->to('/login');
+            return redirect()->to('auth/login');
         }
 
         // Optional: Check if email is verified

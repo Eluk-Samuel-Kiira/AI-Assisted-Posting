@@ -12,9 +12,11 @@ class JobModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [
+    protected $allowedFields = [
         'job_title',
         'company',
+        'company_id',
+        'user_id',
         'job_description',
         'location',
         'employment_type',
@@ -32,6 +34,7 @@ class JobModel extends Model
         'created_at',
         'updated_at'
     ];
+
 
     // Dates
     protected $useTimestamps = true;
@@ -74,5 +77,13 @@ class JobModel extends Model
     {
         $preparedData = $this->prepareData($data);
         return $this->insert($preparedData);
+    }
+
+    
+    public function isJobTitleUnique($companyId, $jobTitle)
+    {
+        return $this->where('company_id', $companyId)
+                    ->where('job_title', $jobTitle)
+                    ->countAllResults() === 0;
     }
 }

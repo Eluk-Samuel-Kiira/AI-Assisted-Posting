@@ -27,6 +27,13 @@ $routes->get('auth/invalid-token', 'AuthController::invalidToken');
 $routes->get('auth/logout', 'AuthController::logout');
 
 
+$routes->get('debug/routes', function() {
+    echo "<h1>Available Routes</h1>";
+    echo "<pre>";
+    print_r(\Config\Services::routes()->getRoutes());
+    echo "</pre>";
+});
+
 
 // Protected routes (require authentication)
 $routes->group('', ['filter' => 'auth'], function($routes) {
@@ -48,5 +55,8 @@ $routes->group('', ['filter' => 'auth'], function($routes) {
     $routes->post('companies/store', 'CompanyController::store');
     $routes->post('companies/update/(:num)', 'CompanyController::update/$1');
     $routes->get('companies/delete/(:num)', 'CompanyController::delete/$1');
+    
+    $routes->get('companies/ajax-list', 'CompanyController::ajaxList');
+    $routes->post('companies/ajax-store', 'CompanyController::ajaxStore');
     
 });

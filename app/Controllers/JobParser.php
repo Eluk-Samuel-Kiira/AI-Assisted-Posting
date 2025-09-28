@@ -2,14 +2,17 @@
 
 use CodeIgniter\Controller;
 use App\Models\JobModel;
+use App\Models\CompanyModel;
 
 class JobParser extends Controller
 {
     protected $jobModel;
+    protected $companyModel;
 
     public function __construct()
     {
         $this->jobModel = new JobModel();
+        $this->companyModel = new CompanyModel();
     }
 
 
@@ -21,36 +24,69 @@ class JobParser extends Controller
     
     public function processJobDescription()
     {
-        // Log raw input for debugging
         $rawInput = file_get_contents('php://input');
         log_message('info', 'Raw input received: ' . $rawInput);
 
         $data = $this->request->getJSON(true);
 
-        if (!$data) {
-            log_message('error', 'No JSON data received or invalid JSON');
+        if (!$data || !isset($data['job_data'])) {
             return $this->response->setJSON([
                 'success' => false,
                 'message' => 'Invalid JSON data'
             ]);
         }
 
-        if (!isset($data['job_data'])) {
-            log_message('error', 'Missing job_data field. Received: ' . json_encode($data));
+        $jobData = $data['job_data'];
+        $companyId = $data['companyId'] ?? null;
+        $userId = session()->get('user_id');
+        $companyName = $data['companyName'] ?? null;
+
+        if (!$companyId || !$userId) {
             return $this->response->setJSON([
                 'success' => false,
-                'message' => 'Missing job_data field'
+                'message' => 'Missing company_id or user_id'
             ]);
         }
 
-        $jobData = $data['job_data'];
-        log_message('info', 'Processing job data: ' . json_encode($jobData));
+        // Validate company exists and matches the name
+        $company = $this->companyModel->find($companyId);
+
+        if (!$company) {
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => 'Invalid company_id: company not found'
+            ]);
+        }
+
+        if (strtolower($company['company_name']) !== strtolower($companyName)) {
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => 'Company name does not match the selected company_id'
+            ]);
+        }
+
+        // Validate uniqueness of job title for this company
+        $jobTitle = $jobData['jobTitle'] ?? null;
+        if (!$jobTitle) {
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => 'Job title is required'
+            ]);
+        }
+
+        if (!$this->jobModel->isJobTitleUnique($companyId, $jobTitle)) {
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => "Job title '{$jobTitle}' already exists for this company"
+            ]);
+        }
 
         try {
-            // Prepare data for database insertion
             $dbData = [
-                'job_title' => $jobData['jobTitle'] ?? null,
+                'job_title' => $jobTitle,
                 'company' => $jobData['company'] ?? null,
+                'company_id' => $companyId,
+                'user_id' => $userId,
                 'job_description' => $jobData['jobDescription'] ?? null,
                 'location' => $jobData['location'] ?? null,
                 'employment_type' => $jobData['employmentType'] ?? null,
@@ -65,14 +101,13 @@ class JobParser extends Controller
                 'responsibilities' => $jobData['responsibilities'] ?? [],
                 'benefits' => $jobData['benefits'] ?? [],
                 'preferred_qualifications' => $jobData['preferredQualifications'] ?? [],
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ];
 
-            // Save to database using the custom method
             $jobId = $this->jobModel->insertJob($dbData);
 
             if ($jobId) {
-                log_message('info', "Job saved successfully with ID: {$jobId}");
-                
                 return $this->response->setJSON([
                     'success' => true,
                     'message' => 'Job data saved successfully',
@@ -81,24 +116,21 @@ class JobParser extends Controller
                 ]);
             } else {
                 $errors = $this->jobModel->errors();
-                log_message('error', 'Failed to save job: ' . print_r($errors, true));
-                
                 return $this->response->setJSON([
                     'success' => false,
                     'message' => 'Failed to save job data',
                     'errors' => $errors
                 ]);
             }
-
         } catch (\Exception $e) {
             log_message('error', 'Error saving job: ' . $e->getMessage());
-            
             return $this->response->setJSON([
                 'success' => false,
                 'message' => 'Server error: ' . $e->getMessage()
             ]);
         }
     }
+
 
     private function parseDate($dateString)
     {

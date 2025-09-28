@@ -2,6 +2,12 @@
 <html>
 <head>
     <title>Registration Successful</title>
+    
+     <!-- Favicon References -->
+    <link rel="icon" type="image/svg+xml" href="<?= base_url('favicon.svg') ?>">
+    <link rel="shortcut icon" href="<?= base_url('favicon.svg') ?>" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="<?= base_url('favicon.svg') ?>">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>

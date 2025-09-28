@@ -70,6 +70,7 @@ class CompanyController extends BaseController
             'contact_fax' => $this->request->getPost('contact_fax'),
             'since' => $this->request->getPost('since'),
             'company_size' => $this->request->getPost('company_size'),
+            'logo' => $this->request->getPost('logo'),
             'address1' => $this->request->getPost('address1'),
             'address2' => $this->request->getPost('address2')
         ];
@@ -132,6 +133,107 @@ class CompanyController extends BaseController
             return redirect()->to('/companies')->with('success', 'Company deleted successfully.');
         } else {
             return redirect()->to('/companies')->with('error', 'Failed to delete company.');
+        }
+    }
+
+    
+    
+    public function ajaxList()
+    {
+        if (!$this->request->isAJAX()) {
+            return $this->response->setStatusCode(405)->setJSON([
+                'success' => false,
+                'message' => 'Method not allowed'
+            ]);
+        }
+
+        try {
+            $companies = $this->companyModel->select('id, company_name')->orderBy('company_name', 'ASC')->findAll();
+            $companiesList = [];
+            
+            foreach ($companies as $company) {
+                $companiesList[$company['id']] = $company['company_name'];
+            }
+            
+            return $this->response->setJSON([
+                'success' => true,
+                'companies' => $companiesList
+            ]);
+            
+        } catch (\Exception $e) {
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => 'Error fetching companies'
+            ]);
+        }
+    }
+
+    // Add this method to your CompanyController
+    public function ajaxStore()
+    {
+        // Validate AJAX request
+        if (!$this->request->isAJAX()) {
+            return $this->response->setStatusCode(405)->setJSON([
+                'success' => false,
+                'message' => 'Method not allowed'
+            ]);
+        }
+
+        $rules = [
+            'company_name' => 'required|min_length[2]|max_length[255]',
+            'contact_name' => 'required|min_length[2]|max_length[255]',
+            'contact_email' => 'permit_empty|valid_email',
+        ];
+
+        if (!$this->validate($rules)) {
+            $errors = $this->validator->getErrors();
+
+            // Log to CodeIgniter logs (writable/logs/)
+            // log_message('error', 'Validation failed: ' . json_encode($errors));
+
+            return $this->response->setJSON([
+                'success' => false,
+                'errors'  => $errors
+            ]);
+        }
+
+
+        try {
+            $data = [
+                'company_name' => $this->request->getPost('company_name'),
+                'contact_name' => $this->request->getPost('contact_name'),
+                'contact_email' => $this->request->getPost('contact_email'),
+                'contact_phone' => $this->request->getPost('contact_phone'),
+                'company_size' => $this->request->getPost('company_size'),
+                'address1' => $this->request->getPost('address1'),
+                'logo' => $this->request->getPost('logo'),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
+
+            // Save to database
+            $companyId = $this->companyModel->insert($data);
+            
+            if ($companyId) {
+                $company = $this->companyModel->find($companyId);
+                
+                return $this->response->setJSON([
+                    'success' => true,
+                    'message' => 'Company added successfully',
+                    'company' => [
+                        'id' => $companyId,
+                        'company_name' => $company['company_name']
+                    ]
+                ]);
+            } else {
+                throw new \Exception('Failed to save company');
+            }
+            
+        } catch (\Exception $e) {
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => 'Error saving company: ' . $e->getMessage()
+            ]);
         }
     }
 }

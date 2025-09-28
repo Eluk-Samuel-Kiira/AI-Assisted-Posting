@@ -39,6 +39,34 @@
         <div class="card-body p-4">
             <div class="row">
                 <div class="col-lg-12">
+                    
+                    <!-- Smart Company Field -->
+                    <div class="col-md-6 mb-3">
+                        <label for="company_name" class="form-label fw-semibold">
+                            Company <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <input type="text" 
+                                class="form-control" 
+                                id="company_name" 
+                                name="company_name" 
+                                placeholder="Enter company name"
+                                list="companySuggestions"
+                                required>
+                            <button type="button" class="btn btn-outline-primary" onclick="openAddCompanyModal()">
+                                <i class="fas fa-plus"></i> New
+                            </button>
+                            <datalist id="companySuggestions">
+                                <!-- Will be populated by JavaScript -->
+                            </datalist>
+                        </div>
+                        <div id="companyValidation" class="form-text"></div>
+                    </div>
+                    <!-- Optional: Hidden company ID field -->
+                    <input type="hidden" id="company_id" name="company_id">
+
+                    <?= $this->include('parser_company') ?>
+
                     <div class="mb-4">
                         <label for="messageInput" class="form-label fw-semibold">Paste job advertisement text:</label>
                         <textarea id="messageInput" class="form-control" placeholder="Paste job advertisement text here..." rows="8" style="resize: vertical;"></textarea>
@@ -57,9 +85,9 @@
                     
                     <!-- Save Section -->
                     <div id="saveSection" style="display: none;" class="mt-4 p-4 bg-light rounded-3 border-start border-4 border-success">
-                        <h4 class="mb-3">Save to Database</h4>
+                        <h4 class="mb-3">Submit Post</h4>
                         <button id="saveButton" class="btn btn-success btn-lg" onclick="saveToBackend()">
-                            <i class="fas fa-save me-2"></i>Save to Database
+                            <i class="fas fa-save me-2"></i>Save Job Posting
                         </button>
                         <div id="saveStatus" class="mt-3"></div>
                     </div>
@@ -213,7 +241,7 @@
             }
 
             const body = await response.json();
-            console.log('Full API Response:', body);
+            // console.log('Full API Response:', body);
             
             // Store the original text
             currentOriginalText = jobText;
@@ -241,6 +269,15 @@
         const saveButton = document.getElementById('saveButton');
         const saveStatus = document.getElementById('saveStatus');
     
+        // Get company name and ID
+        const companyName = document.getElementById('company_name')?.value.trim();
+        const companyId = document.getElementById('company_id')?.value;
+
+        // Validate company fields
+        if (!companyName && !companyId) {
+            showToast('Error saving company: Missing company name or ID', 'error');
+            return; // stop execution
+        }
         
         if (!currentJobData) {
             alert('No job data to save. Please analyze a job first.');
@@ -255,6 +292,8 @@
         try {
             // Prepare data for backend
             const postData = {
+                companyName: companyName,
+                companyId: companyId,
                 job_data: currentJobData,
             };
             
@@ -270,14 +309,29 @@
             
             const result = await response.json();
             
-            if (response.ok) {
+            if (result.success) {
+                // ✅ Backend success
                 saveStatus.innerHTML = `<div class="alert alert-success">
                     <h4><i class="fas fa-check-circle me-2"></i>Success!</h4>
-                    <p class="mb-0">Job data successfully saved to database. ${result.message || ''}</p>
+                    <p class="mb-0">${result.message || 'Saved successfully'}<br>
+                    Job ID: ${result.job_id || 'N/A'}<br>
+                    Time: ${result.timestamp || ''}</p>
                 </div>`;
-                console.log('Backend response:', result.data);
+
+                // console.log('Backend response:', result);
+
+                showToast(result.message || 'Saved successfully', 'success');
+                // ✅ Clear company input fields
+                document.getElementById('company_name').value = '';
+                document.getElementById('company_id').value = '';
             } else {
-                throw new Error(result.message || `HTTP ${response.status}: Failed to save job data`);
+                // ❌ Backend returned error
+                saveStatus.innerHTML = `<div class="alert alert-danger">
+                    <h4><i class="fas fa-exclamation-triangle me-2"></i>Error!</h4>
+                    <p class="mb-0">${result.message || 'Unknown error'}</p>
+                </div>`;
+
+                showToast(result.message || 'Unknown error', 'error');
             }
             
         } catch (error) {
@@ -289,7 +343,7 @@
         } finally {
             // Re-enable save button
             saveButton.disabled = false;
-            saveButton.innerHTML = '<i class="fas fa-save me-2"></i>Save to Database';
+            saveButton.innerHTML = '<i class="fas fa-save me-2"></i>Saved to Database';
         }
     }
 
@@ -376,6 +430,9 @@
                 </div>
             </div>
         `;
+
+        // Company name auto fill        
+        document.getElementById('company_name').value = jobData.company || 'Not specified';
         
         // Job Description
         if (jobData.jobDescription) {

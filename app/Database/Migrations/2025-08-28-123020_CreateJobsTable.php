@@ -19,6 +19,18 @@ class CreateJobsTable extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
+            'company_id' => [
+                'type'       => 'INT',
+                'constraint' => 11,
+                'unsigned'   => true,
+                'null'       => false,
+            ],
+            'user_id' => [
+                'type'       => 'INT',
+                'constraint' => 11,
+                'unsigned'   => true,
+                'null'       => false,
+            ],
             'company' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,

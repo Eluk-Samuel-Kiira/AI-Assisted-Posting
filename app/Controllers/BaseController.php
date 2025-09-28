@@ -8,6 +8,7 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use App\Models\CompanyModel;
 
 /**
  * Class BaseController
@@ -27,6 +28,8 @@ abstract class BaseController extends Controller
      * @var CLIRequest|IncomingRequest
      */
     protected $request;
+    protected $companyModel;
+    protected $globalCompanies = [];
 
     /**
      * An array of helpers to be loaded automatically upon
@@ -54,5 +57,29 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = service('session');
+
+        // Load Company Model
+        $this->companyModel = new CompanyModel();
+        
+        // Load companies for global access
+        $this->loadGlobalCompanies();
+    }
+
+    protected function loadGlobalCompanies()
+    {
+        $cache = \Config\Services::cache();
+        $this->globalCompanies = $cache->get('global_companies');
+        
+        if (!$this->globalCompanies) {
+            $this->globalCompanies = $this->companyModel->select('id, company_name')->orderBy('company_name', 'ASC')->findAll();
+            $cache->save('global_companies', $this->globalCompanies, 3600);
+        }
+    }
+
+    protected function shareWithView($data = [])
+    {
+        // Add global companies to all view data
+        $data['globalCompanies'] = $this->globalCompanies;
+        return $data;
     }
 }

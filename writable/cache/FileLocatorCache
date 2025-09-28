@@ -92,56 +92,6 @@
         ),
       ),
     ),
-    'Helpers/security_helper' => 
-    array (
-      'php' => 
-      array (
-        1 => 
-        array (
-          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Helpers\\security_helper.php',
-        ),
-      ),
-    ),
-    'Helpers/inflector_helper' => 
-    array (
-      'php' => 
-      array (
-        1 => 
-        array (
-          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Helpers\\inflector_helper.php',
-        ),
-      ),
-    ),
-    'Language/en/CLI.php' => 
-    array (
-      'php' => 
-      array (
-        0 => 
-        array (
-          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Language\\en\\CLI.php',
-        ),
-      ),
-    ),
-    'Language/en/Migrations.php' => 
-    array (
-      'php' => 
-      array (
-        0 => 
-        array (
-          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Language\\en\\Migrations.php',
-        ),
-      ),
-    ),
-    'Language/en/HTTP.php' => 
-    array (
-      'php' => 
-      array (
-        0 => 
-        array (
-          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Language\\en\\HTTP.php',
-        ),
-      ),
-    ),
     'Language/en/Errors.php' => 
     array (
       'php' => 
@@ -152,13 +102,23 @@
         ),
       ),
     ),
-    'Language/en/Core.php' => 
+    'Helpers/security_helper' => 
+    array (
+      'php' => 
+      array (
+        1 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Helpers\\security_helper.php',
+        ),
+      ),
+    ),
+    'Language/en/Email.php' => 
     array (
       'php' => 
       array (
         0 => 
         array (
-          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Language\\en\\Core.php',
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Language\\en\\Email.php',
         ),
       ),
     ),
@@ -179,6 +139,46 @@
         0 => 
         array (
           0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Language\\en\\Number.php',
+        ),
+      ),
+    ),
+    'Language/en/Validation.php' => 
+    array (
+      'php' => 
+      array (
+        0 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Language\\en\\Validation.php',
+          1 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Language\\en\\Validation.php',
+        ),
+      ),
+    ),
+    'Language/en/Contact name must be at least 3 characters long.php' => 
+    array (
+      'php' => 
+      array (
+        0 => 
+        array (
+        ),
+      ),
+    ),
+    'Language/en/Migrations.php' => 
+    array (
+      'php' => 
+      array (
+        0 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Language\\en\\Migrations.php',
+        ),
+      ),
+    ),
+    'Language/en/CLI.php' => 
+    array (
+      'php' => 
+      array (
+        0 => 
+        array (
+          0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Language\\en\\CLI.php',
         ),
       ),
     ),
@@ -315,46 +315,17 @@
       56 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\Commands\\Utilities\\Routes\\SampleURIGenerator.php',
     ),
   ),
-  'locateFile' => 
-  array (
-    'CodeIgniter\\Commands\\Generators\\Views\\seeder.tpl.php' => 
-    array (
-      'Views' => 
-      array (
-        'php' => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\/Commands/Generators/Views/seeder.tpl.php',
-      ),
-    ),
-    'CodeIgniter\\Commands\\Generators\\Views\\model.tpl.php' => 
-    array (
-      'Views' => 
-      array (
-        'php' => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\/Commands/Generators/Views/model.tpl.php',
-      ),
-    ),
-    'CodeIgniter\\Commands\\Generators\\Views\\controller.tpl.php' => 
-    array (
-      'Views' => 
-      array (
-        'php' => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\system\\/Commands/Generators/Views/controller.tpl.php',
-      ),
-    ),
-    'layouts/dashboard.php' => 
-    array (
-      'Views' => 
-      array (
-        'php' => false,
-      ),
-    ),
-    'companies/create.php' => 
-    array (
-      'Views' => 
-      array (
-        'php' => false,
-      ),
-    ),
-  ),
   'listNamespaceFiles' => 
   array (
+    'App' => 
+    array (
+      '/Database/Migrations/' => 
+      array (
+        0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Database\\Migrations\\2024_01_01_000000_CreateCompaniesTable.php',
+        1 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Database\\Migrations\\2024_01_01_000000_CreateUsersTable.php',
+        2 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Database\\Migrations\\2025-08-28-123020_CreateJobsTable.php',
+      ),
+    ),
     'CodeIgniter' => 
     array (
       '/Database/Migrations/' => 
@@ -365,15 +336,6 @@
     array (
       '/Database/Migrations/' => 
       array (
-      ),
-    ),
-    'App' => 
-    array (
-      '/Database/Migrations/' => 
-      array (
-        0 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Database\\Migrations\\2024_01_01_000000_CreateCompaniesTable.php',
-        1 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Database\\Migrations\\2024_01_01_000000_CreateUsersTable.php',
-        2 => 'C:\\xampp\\htdocs\\Lafab\\AI-Job-Posting\\app\\Database\\Migrations\\2025-08-28-123020_CreateJobsTable.php',
       ),
     ),
     'thiagoalessio\\TesseractOCR' => 
